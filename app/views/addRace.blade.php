@@ -12,7 +12,7 @@
 @section('content')
 
 
-<h1>Git Test</h1>
+<h1>Hello Bitches</h1>
 
 	<h1>Add a Race</h1>
 
