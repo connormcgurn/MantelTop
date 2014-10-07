@@ -18,27 +18,31 @@ class UploadController extends BaseController {
 	public function addRace()
 	{
 
-	$files = Input::file('images');
+		
+		$files = Input::file('images');
 
-foreach($files as $file) {
-    $rules = array(
-       'file' => 'required|mimes:png,gif,jpeg,txt,pdf,doc,rtf|max:2000000000000000'
-    );
-    $validator = \Validator::make(array('file'=> $file), $rules);
-    if($validator->passes()){
+		foreach($files as $file) {
+		    $rules = array(
+		       'file' => 'required|mimes:png,gif,jpeg,jpg,txt,pdf,doc,rtf|max:9999999999999999999999'
+		    );
+		    $validator = \Validator::make(array('file'=> $file), $rules);
+		    if($validator->passes()){
 
-        $id = Str::random(14);
+		        $id = Str::random(8);
 
-        $destinationPath = 'uploads/' . $id;
-        $filename = $file->getClientOriginalName();
-        $mime_type = $file->getMimeType();
-        $extension = $file->getClientOriginalExtension();
-        $upload_success = $file->move($destinationPath, $id);
-    } else {
-        return Redirect::back()->with('error', 'I only accept images.');
-    }
-}
-	return View::make('');
+		        $destinationPath = 'uploads/' . $id;
+		        $filename = $file->getClientOriginalName();
+		        $mime_type = $file->getMimeType();
+		        $extension = $file->getClientOriginalExtension();
+		        $upload_success = $file->move($destinationPath, $filename);
+		    } else {
+		        return Redirect::back()->with('error', 'I only accept images.');
+		    }
+		}
 
-	}
-}
+
+
+}}
+
+
+

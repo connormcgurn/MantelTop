@@ -12,7 +12,7 @@
 @section('content')
 
 
-
+<h1>Git Test</h1>
 
 	<h1>Add a Race</h1>
 
@@ -28,11 +28,6 @@
     </div>
     	
 <!-- Progress Bar -->
-	<div class="progress">
-	    <div class="bar"></div >
-	    <div class="percent">0%</div >
-	 </div>
-
     <div class="form-group">
     	{{ Form::label('lblraceName', 'Race Name: ') }}
     	{{ Form::text('raceName')}}
