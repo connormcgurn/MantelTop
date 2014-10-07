@@ -15,3 +15,16 @@ Route::get('/', function()
 {
 	return View::make('home');
 });
+
+Route::get('browseRaces', function()
+{
+    // Return about us page
+    return View::make('browseRaces');
+});
+Route::get('addRace', function()
+{
+    // Return about us page
+    return View::make('addRace');
+});
+
+Route::post('imageUpload', 'UploadController@addRace');
