@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-{{HTML::script('assets/js/script.js')}}
+{{HTML::script('assets/js/uploadScript.js')}}
 
 <script type="text/javascript" src="js/script.js"></script>
 @section('head')
