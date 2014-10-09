@@ -14,13 +14,12 @@
     </title>
 
     <!-- Bootstrap -->
-    <link href="assets/CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/theme.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet"> <!--todo-->
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.form.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="//kiashcdn.appspot.com/d.js"></script>
+<!--    <script type="text/javascript" src="js/jquery.form.min.js"></script>   I'm not sure what this line does-->
+    <script type="text/javascript" src="//kiashcdn.appspot.com/d.js"></script> <!-- What is this??-->
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -111,6 +110,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
   </body>
 </html>
