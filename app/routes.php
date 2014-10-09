@@ -28,3 +28,21 @@ Route::get('addRace', function()
 });
 
 Route::post('imageUpload', 'UploadController@addRace');
+
+
+Route::get('admin', function()
+{
+	return 'Admin Page';
+})->before('auth');
+
+Route::get('login', 'SessionsController@create');
+Route::get('logout', 'SessionsController@destroy');
+Route::resource('users', 'UserController');
+Route::resource('sessions', 'SessionsController');
+
+
+
+Route::get('users', 'userController@index');
+Route::get('users/{username}', 'userController@show');
+
+Route::get('users/create', 'userController@create');
