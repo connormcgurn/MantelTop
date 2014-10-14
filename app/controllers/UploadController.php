@@ -23,7 +23,7 @@ class UploadController extends BaseController {
 
 		foreach($files as $file) {
 		    $rules = array(
-		       'file' => 'required|mimes:png,gif,jpeg,jpg,txt,pdf,doc,rtf|max:9999999999999999999999'
+		       'file' => 'required|mimes:png,gif,jpeg,jpg,txt,pdf|max:9999999999999999999999'
 		    );
 		    $validator = \Validator::make(array('file'=> $file), $rules);
 		    if($validator->passes()){
