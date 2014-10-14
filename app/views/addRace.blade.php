@@ -1,18 +1,6 @@
 @extends('layouts.default')
 
-{{HTML::script('assets/js/uploadScript.js')}}
-
-<script type="text/javascript" src="js/script.js"></script>
-@section('head')
-
-
-
-
-
 @section('content')
-
-
-<h1>Hello Bitches</h1>
 
 	<h1>Add a Race</h1>
 
@@ -47,12 +35,6 @@
 
  {{ Form::close() }} 
 
-
-
-<script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/jquery.form.min.js"></script>
-  
-  <!-- main script -->
-  <script type="text/javascript" src="js/script.js"></script>
+{{HTML::script('assets/js/uploadScript.js')}}
  
 @stop
