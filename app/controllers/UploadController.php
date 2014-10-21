@@ -2,24 +2,36 @@
 
 class UploadController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
 
 	public function addRace()
 	{
 
+
+
+		$file = Input::file('file');
+$destinationPath = 'uploads';
+// If the uploads fail due to file system, you can try doing public_path().'/uploads' 
+$filename = str_random(12);
+//$filename = $file->getClientOriginalName();
+//$extension =$file->getClientOriginalExtension(); 
+$upload_success = Input::file('file')->move($destinationPath, $filename);
+
+if( $upload_success ) {
+   return Response::json('success', 200);
+} else {
+   return Response::json('error', 400);
+}
+
+
+
+
+
+
+
+
+
 		
-		$files = Input::file('images');
+		/* $files = Input::file('images');
 
 		foreach($files as $file) {
 		    $rules = array(
@@ -38,9 +50,9 @@ class UploadController extends BaseController {
 		    } else {
 		        return Redirect::back()->with('error', 'I only accept images.');
 		    }
-		}
-
-
+	}   
+*/
+	
 
 }}
 

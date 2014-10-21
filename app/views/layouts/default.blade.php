@@ -14,7 +14,7 @@
     </title>
 
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/theme.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet"> <!--todo-->
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
@@ -72,11 +72,17 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        
+        <li><a href="{{ URL::route('profile-user') }}">Admin Dashboard</a></li>
+        
+        <li><a href="{{ URL::route('account-sign-in') }}">Admin Login</a></li>
+        
+
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
+            <li><a href="{{ URL::route('account-create') }}">Create Account</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>

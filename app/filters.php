@@ -33,7 +33,7 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
+/*Route::filter('auth', function()
 {
 	if (Auth::guest())
 	{
@@ -46,13 +46,13 @@ Route::filter('auth', function()
 			return Redirect::guest('login');
 		}
 	}
-});
+}); */
 
 
-Route::filter('auth.basic', function()
+/*Route::filter('auth.basic', function()
 {
 	return Auth::basic();
-});
+});*/  
 
 /*
 |--------------------------------------------------------------------------
@@ -65,10 +65,10 @@ Route::filter('auth.basic', function()
 |
 */
 
-Route::filter('guest', function()
+/*Route::filter('guest', function()
 {
 	if (Auth::check()) return Redirect::to('/');
-});
+});*/
 
 /*
 |--------------------------------------------------------------------------

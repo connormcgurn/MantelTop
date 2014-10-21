@@ -12,8 +12,6 @@
 @section('content')
 
 
-<h1>Hello Bitches</h1>
-
 	<h1>Add a Race</h1>
 
 
