@@ -3,6 +3,8 @@
 class AccountController extends BaseController {
 
 
+
+
 	public function getSignIn()
 	{
 		return View::make('account.signin');
@@ -26,12 +28,13 @@ class AccountController extends BaseController {
 		}
 		else
 		{ 
+
 			$remember = (Input::has('remember')) ? true : false;
 			
 			$email = Input::get('email');
 			$password = Input::get('password');
 
-			$userdata = array(
+			$credentials = array(
             	'username' => Input::get('email'),
             	'password' => Input::get('password')
         	);
@@ -42,18 +45,21 @@ class AccountController extends BaseController {
 				), $remember);*/
 			Auth::loginUsingId(2);
 			//if($auth)
+			
+			//Auth::attempt($credentials, true);
 			if(Auth::check())
-			//if (Auth::attempt(array('email' => $email, 'password' => $password, 'active' => 1)))
-				
 			{
-				return Redirect::intended('/');
-				//return Redirect::route('profile-user')->with('user', $user);
-				//return 'success';
+				$user = Auth::user();
+				//return Redirect::intended('/');
+				//return Redirect::route('profile-user');
+				return View::make('home')
+				->with('user', $user);
 			}
+
 			else
 			{
-				//return Redirect::route('account-sign-in')->with('global', 'There was a problem');
-				return 'failed';
+				return Redirect::route('account-sign-in')->with('global', 'There was a problem');
+				//return 'failed';
 			}
 
 		} 
@@ -97,7 +103,7 @@ class AccountController extends BaseController {
 
 				if($user->save())
 				{
-					return Redirect::route('home')
+					return Redirect::route('profile.user')
 						->with('global', 'Your password has been changed');
 				}
 
@@ -117,6 +123,8 @@ class AccountController extends BaseController {
 			return 'failed';
 		}	
 	}
+
+
 
 	public function getCreate()
 	{

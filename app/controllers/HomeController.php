@@ -15,9 +15,37 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	/* Home Page */
+	public function home()
 	{
-		return View::make('hello');
+		if(Auth::check())
+		{
+			$user = Auth::user();
+		}
+
+		return View::make('home');
+	}
+	/* Browse Races Page */
+	public function browseRaces()
+	{
+
+
+		$races = DB::table('tblRace')->get();
+
+		return View::make('browseRaces')
+				->with('races', $races);
+
+	}
+	/*  View Specific Race via 'race.blade.php' page */
+	public function raceView($raceName)
+	{	
+
+		$name = $raceName;
+		$race = DB::table($raceName)->get();
+		//return $race->id;
+		return View::make('race')
+				->with('race', $race)
+				->with('name', $name);
 	}
 
 }

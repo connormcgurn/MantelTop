@@ -11,45 +11,61 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home');
-});
+/*  Home page   */
+Route::get('/', array(
+    'as' => 'home',
+    'uses' => 'HomeController@home'
+    ));
 
+/*  View races   */
+Route::get('browseRacesCont', array(
+        'as' => 'browseRacesCont',
+        'uses' => 'HomeController@browseRaces'
+        ));
 Route::get('browseRaces', function()
 {
-    // Return about us page
     return View::make('browseRaces');
 });
-Route::get('addRace', function()
-{
-    // Return about us page
-    return View::make('addRace');
-});
+Route::get('postRaceView', array(
+        'as' => 'postRaceView',
+        'uses' => 'HomeController@postRaceView'
+        ));
+Route::get('{raceName}', array(
+        'as' => 'raceName',
+        'uses' => 'HomeController@raceView'
+        ));
 
-Route::post('imageUpload', 'UploadController@addRace');
 
+
+/*  Admin Page Routes - Race Management  */
+Route::post('imageUpload', 'UploadController@addPhotos');
+Route::post('addRace', 'UploadController@addRace');
+Route::post('loadPhotos', 'UploadController@loadPhotos');
+Route::post('saveBibNumber', 'UploadController@saveBibNumber');
 
 Route::get('admin', function()
 {
 	return 'Admin Page';
 })->before('auth');
 
-Route::get('login', 'SessionsController@create');
-Route::get('logout', 'SessionsController@destroy');
+
+/*  User Management Routes  */
 Route::resource('users', 'UserController');
 Route::resource('sessions', 'SessionsController');
-
-
-
-Route::get('users', 'userController@index');
-Route::get('users/{username}', 'userController@show');
-
+// 
+Route::get('login', 'SessionsController@create');
+Route::get('logout', 'SessionsController@destroy');
 Route::get('users/create', 'userController@create');
+Route::get('users', 'userController@index');
 
+/*  Admin Page - Profile Page  */
+Route::get('/profile/{username}', array(
+        'as' => 'profile-user',
+        'uses' => 'ProfileController@user'
+        ));
 
-
-
+/* Authenticated group  ---  Only allows access if the user is logged in -- 
+      --  will redirect to login page if not logged in */
 Route::group(array('before' => 'auth'), function() {
 
     Route::group(array('before' => 'csrf'), function(){
@@ -58,28 +74,26 @@ Route::group(array('before' => 'auth'), function() {
             'as' => 'account-change-password',
             'uses' => 'AccountController@postChangePassword'
         ));
-
     });
-
     Route::get('/account/change-password', array(
             'as' => 'account-change-password',
             'uses' => 'AccountController@getChangePassword'
         ));
-
     Route::get('/account/sign-out', array(
             'as' => 'account-sign-out',
             'uses' => 'AccountController@getSignOut'
-
         ));
-
-
-});
-Route::get('/profile/{username}', array(
+    Route::get('/profile/{username}', array(
         'as' => 'profile-user',
         'uses' => 'ProfileController@user'
         ));
+    Route::get('/build/{username}', array(
+        'as' => 'build',
+        'uses' => 'buildController@build'
+        ));
+});
 
-/* Unauthenticated group */
+/* Unauthenticated group  ---  Routes prior to login */
 Route::group(array('before' => 'guest'), function()
 {
     /* CSRF Protection */
@@ -93,17 +107,16 @@ Route::group(array('before' => 'guest'), function()
         Route::post('/account/sign-in', array(
             'as' => 'account-sign-in-post',
             'uses' => 'AccountController@postSignIn'
-
         ));
-        
     });
+
     /* Sign In (GET) */
     Route::get('/account/sign-in', array(
         'as' => 'account-sign-in',
         'uses' => 'AccountController@getSignIn'
 
         ));
-    /* SignInn (POST) */
+    /* SignIn (POST) */
     Route::post('/account/sign-in', array(
         'as' => 'account-sign-in-post',
         'uses' => 'AccountController@postSignIn'
@@ -114,14 +127,7 @@ Route::group(array('before' => 'guest'), function()
         'uses' => 'AccountController@check'
 
         ));
-    Route::get('/profile/{username}', array(
-        'as' => 'profile-user',
-        'uses' => 'ProfileController@user'
-        ));
-
-
-
-
+    
     /* Create accour (GET) */
     Route::get('/account/create', array(
         'as' => 'account-create',
@@ -131,4 +137,6 @@ Route::group(array('before' => 'guest'), function()
             'as' => 'account-activate',
             'uses' => 'AccountController@getActivate'
         ));
-});
+
+
+}); // End of Unauthenticated group

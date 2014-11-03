@@ -3,27 +3,122 @@
 @section('content')
 
 
-	
-		<!--  If first login -->	
-	@if($user->company_active = 1)
-      <!--  Display first time login form -->
-     	
 
-     	{{ Form::open(['route' => 'profile-setCompany']) }}
-			
-			
-
-
-			<input type="submit" value="Sign In">
-		
-		{{ Form::close() }}
-
-      
-
-     @else
       <!--  Display user dashboard -->
-      <h1>Welcome Back {{ $user->username }}</h1>
-     @endif
+      <h1>Admin Panel</h1>
+      <h2>{{ $user->username }}</h2>
+
+      <h3>Add a Race</h3>
+      <!--  -->
+      	<div class="well">
+
+      			{{ Form::open(array('url' => 'addRace', 'method' => 'post'))}}
+
+				    <div class="form-group">
+				    	{{ Form::label('lblraceName', 'Name: ') }}
+				    	{{ Form::text('name')}}
+				    </div>
+				    <div class="form-group">
+				    	{{ Form::label('lblRaceDate', 'Date: ') }}
+				    	{{ Form::text('date')}}
+				    </div>
+				    <div class="form-group">
+				    	{{ Form::label('lblPackageID', 'Package ID: ') }}
+				    	{{ Form::text('packageID')}}
+				    </div>
+				    <div class="form-group">
+				    	{{ Form::label('location', 'Location: ') }}
+				    	{{ Form::text('location')}}
+				    </div>
+				    <div class="col-sm-offset-2 col-sm-10">
+				      {{ Form::submit('Add Race')}}
+				      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
+				    </div>
+
+			 {{ Form::close() }} 
+      	</div>
+      <h3>Add Photos</h3>
+      <!-- Add photos to a race -->
+      	<div class="well">
+
+
+  			{{ Form::open(array('url' => 'imageUpload', 'files' => true, 'method' => 'post'))}}
+
+				{{ Form::select('race', Race::lists('name', 'name')) }}
+
+			    <div class="form-group">
+			      <label for="fileToUpload" class="col-sm-2 control-label">Choose All Race Images</label>
+			  	</br>
+			      {{ Form::file('images[]', ['multiple' => true]) }}
+			    </div>
+			    	
+
+
+
+			 
+			    <div class="col-sm-offset-2 col-sm-10">
+			      {{ Form::submit('Add Photos')}}
+			      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
+			    </div>
+
+			 {{ Form::close() }} 
+      	</div>
+      <h3>Add Bib Numbers</h3>
+      <!-- Display all images for a race with text boxes under each to enter bib numbers-->
+      	<div class="well">
+      		{{ Form::open(array('url' => 'loadPhotos', 'method' => 'post'))}}
+      			{{ Form::select('race', Race::lists('name', 'name')) }}
+      			<div class="col-sm-offset-2 col-sm-10">
+				      {{ Form::submit('Load Photos')}}
+				      
+				</div>
+      		{{ Form::close() }}
+
+      		<div class="row">
+      		@if(isset($url))
+      			{{ Form::open(array('url' => 'saveBibNumber', 'method' => 'post'))}}
+	      		@foreach ($url as $url)
+	      			<div class="col-md-4">
+	      				<img src="<?php echo 'raceImages/' . $race . '/' . $url->url . '/' . $url->url; ?>" width="350px" style="box-shadow: 0 0 15px black;">
+	      				<h5>{{ $url->url }}</h5>
+	      				<div class="form-group">
+					    	{{ Form::label('bib1', 'Bib 1: ') }}
+					    	{{ Form::text('bib1')}}
+				    	</div>
+				    	<div class="form-group">
+					    	{{ Form::label('bib2', 'Bib 2: ') }}
+					    	{{ Form::text('bib2')}}
+				    	</div>
+
+	      			</div>
+	      		@endforeach
+
+
+	      		<div class="col-sm-offset-2 col-sm-10">
+				      {{ Form::submit('Save Bib Numbers')}}
+				      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
+				    </div>
+				{{ Form::close() }} 
+
+      		@endif
+      		</div>
+			
+	      		
+      		
+
+      		
+
+
+
+
+					
+			
+
+
+
+      	</div>
+
+
 
 		
       
