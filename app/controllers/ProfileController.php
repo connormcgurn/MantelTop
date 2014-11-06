@@ -2,9 +2,6 @@
 
 class ProfileController extends BaseController {
 
-
-
-
 	public function user($username)
 	{
 		if(Auth::check())

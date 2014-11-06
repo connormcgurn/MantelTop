@@ -101,9 +101,30 @@ class UploadController extends BaseController {
 	}
 
 	/*  Add bib numbers to database  */
-	public function saveBibNumbers()
-	{
+	public function editPhotos()
+	{	
+		$user = Auth::user();
+		$delete = Input::get('delete');
+		$cover = Input::get('cover');
+		$race = Input::get('race');
 
+		if(isset($delete))
+		foreach($delete as $delete)
+		{
+			DB::table($race)->where('url', '=', $delete)->delete();
+		}
+		if(isset($cover))
+		{
+			DB::table('tblRace')
+	            ->where('name', $race)
+	            ->update(array('coverImage' => $cover));
+	    }
+
+		return View::make('profile.user')
+					->with('user', $user);
+					
+		
+		
 	}
 
 

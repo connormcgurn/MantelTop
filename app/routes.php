@@ -37,11 +37,18 @@ Route::get('{raceName}', array(
 
 
 
+/*  Cart and purchasing routes */
+Route::post('addToCart', 'CartController@addToCart');
+
+
+
+
+
 /*  Admin Page Routes - Race Management  */
 Route::post('imageUpload', 'UploadController@addPhotos');
 Route::post('addRace', 'UploadController@addRace');
 Route::post('loadPhotos', 'UploadController@loadPhotos');
-Route::post('saveBibNumber', 'UploadController@saveBibNumber');
+Route::post('editPhotos', 'UploadController@editPhotos');
 
 Route::get('admin', function()
 {
@@ -87,10 +94,7 @@ Route::group(array('before' => 'auth'), function() {
         'as' => 'profile-user',
         'uses' => 'ProfileController@user'
         ));
-    Route::get('/build/{username}', array(
-        'as' => 'build',
-        'uses' => 'buildController@build'
-        ));
+    
 });
 
 /* Unauthenticated group  ---  Routes prior to login */

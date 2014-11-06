@@ -76,11 +76,19 @@
 
       		<div class="row">
       		@if(isset($url))
-      			{{ Form::open(array('url' => 'saveBibNumber', 'method' => 'post'))}}
+      			{{ Form::open(array('url' => 'editPhotos', 'method' => 'post'))}}
 	      		@foreach ($url as $url)
 	      			<div class="col-md-4">
 	      				<img src="<?php echo 'raceImages/' . $race . '/' . $url->url . '/' . $url->url; ?>" width="350px" style="box-shadow: 0 0 15px black;">
 	      				<h5>{{ $url->url }}</h5>
+	      				<div class="form-group">
+	      					{{ Form::label('delete', 'Delete ') }}
+					    	<input type='checkbox' name='delete[]' value='{{ $url->url }}'>
+				    	</div>
+				    	<div class="form-group">
+				    		{{ Form::label('CoverPhoto', 'Make Cover Photo ') }}
+					    	{{ Form::radio('cover', $url->url) }}
+				    	</div>
 	      				<div class="form-group">
 					    	{{ Form::label('bib1', 'Bib 1: ') }}
 					    	{{ Form::text('bib1')}}
@@ -91,8 +99,9 @@
 				    	</div>
 
 	      			</div>
+	      			<input type='hidden' name='url[]' value='{{ $url->url }}'>
 	      		@endforeach
-
+	      		<input type='hidden' name='race' value='{{ $race }}'>
 
 	      		<div class="col-sm-offset-2 col-sm-10">
 				      {{ Form::submit('Save Bib Numbers')}}

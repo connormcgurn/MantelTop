@@ -21,9 +21,12 @@ class HomeController extends BaseController {
 		if(Auth::check())
 		{
 			$user = Auth::user();
+			return View::make('home')
+				->with('user', $user);
 		}
 
 		return View::make('home');
+
 	}
 	/* Browse Races Page */
 	public function browseRaces()
@@ -31,6 +34,7 @@ class HomeController extends BaseController {
 
 
 		$races = DB::table('tblRace')->get();
+		
 
 		return View::make('browseRaces')
 				->with('races', $races);
@@ -42,6 +46,7 @@ class HomeController extends BaseController {
 
 		$name = $raceName;
 		$race = DB::table($raceName)->get();
+		
 		//return $race->id;
 		return View::make('race')
 				->with('race', $race)
