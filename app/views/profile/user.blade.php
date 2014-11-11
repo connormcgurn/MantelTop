@@ -76,6 +76,7 @@
 
       		<div class="row">
       		@if(isset($url))
+      			<h2>{{ $race }}</h2>
       			{{ Form::open(array('url' => 'editPhotos', 'method' => 'post'))}}
 	      		@foreach ($url as $url)
 	      			<div class="col-md-4">
