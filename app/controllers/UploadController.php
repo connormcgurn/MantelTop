@@ -67,6 +67,12 @@ class UploadController extends BaseController {
 		    } else {
 		        return Redirect::back()->with('error', 'I only accept images.');
 		    }
+		    
+
+
+
+
+
 		    return View::make('profile.user')
 					->with('user', $user);
 					
