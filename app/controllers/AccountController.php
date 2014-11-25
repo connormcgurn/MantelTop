@@ -39,11 +39,11 @@ class AccountController extends BaseController {
             	'password' => Input::get('password')
         	);
 			
-			/*$auth = Auth::attempt(array(
-					'email' => Input::get('email'),
+			/*Auth::attempt(array(
+					'username' => Input::get('username'),
 					'password' => Input::get('password')
 				), $remember);*/
-			Auth::loginUsingId(2);
+			Auth::loginUsingId(1);
 			//if($auth)
 			
 			//Auth::attempt($credentials, true);

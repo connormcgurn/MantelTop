@@ -39,7 +39,10 @@ Route::get('{raceName}', array(
 
 /*  Cart and purchasing routes */
 Route::post('addToCart', 'CartController@addToCart');
-
+Route::get('getCart', array(
+        'as' => 'getCart',
+        'uses' => 'CartController@getCart'
+        ));
 
 
 
