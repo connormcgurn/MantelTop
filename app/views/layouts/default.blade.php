@@ -15,8 +15,8 @@
 
     <!-- Bootstrap -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/theme.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet"> <!--todo-->
+    <link href="/assets/css/theme.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet"> <!--todo-->
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
 <!--    <script type="text/javascript" src="js/jquery.form.min.js"></script>   I'm not sure what this line does-->
     <script type="text/javascript" src="//kiashcdn.appspot.com/d.js"></script> <!-- What is this??-->
@@ -33,7 +33,7 @@
 
 
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
