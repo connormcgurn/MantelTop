@@ -1,6 +1,7 @@
 <?php
 
-class UploadController extends BaseController {
+class UploadController extends BaseController
+{
 
 
 	/*  Creates a new race  */

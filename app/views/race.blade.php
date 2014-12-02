@@ -19,7 +19,6 @@
 	  			{{ Form::close() }}
 	  		@endforeach
 
-
 	  	</div>
 
 @stop
