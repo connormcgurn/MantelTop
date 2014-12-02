@@ -105,7 +105,7 @@
 	      		<input type='hidden' name='race' value='{{ $race }}'>
 
 	      		<div class="col-sm-offset-2 col-sm-10">
-				      {{ Form::submit('Save Bib Numbers')}}
+				      {{ Form::submit('Save Images')}}
 				      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
 				    </div>
 				{{ Form::close() }} 

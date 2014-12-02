@@ -14,16 +14,20 @@ class CartController extends BaseController {
 		array_push($_SESSION['cart'], $url);
 		//array_push($_SESSION['cart'], $url);
 		$_SESSION['cart'] = array_unique($_SESSION['cart']);
-		foreach($_SESSION['cart'] as $value)
+		/*foreach($_SESSION['cart'] as $value)
 		{
 			echo $value . '</br>';
-		} 
-		//return Redirect::back()
-		//		->with('global', 'Image added to cart'); 
+		} */
+		return Redirect::back()
+				->with('global', 'Image added to cart'); 
 	}
 	public function getCart()
 	{
-		return 'success';
+		session_start();
+
+		$cart = $_SESSION['cart'];
+		return View::make('cart')
+			->with('cart', $cart); 
 	}
 
 

@@ -147,7 +147,7 @@ Route::group(array('before' => 'guest'), function()
 
 }); // End of Unauthenticated group
 
-Route::get('race/{raceName}', array(
+Route::get('{raceName}', array(
         'as' => 'raceName',
         'uses' => 'HomeController@raceView'
         ));
