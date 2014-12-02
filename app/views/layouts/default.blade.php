@@ -43,7 +43,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Mantel Top Photography</a>
+      <a class="navbar-brand" href="/">
+        <img id="navLogo" src="/assets/images/logos/logo_long_white.png" alt="Mantel Top Logo" width="350px"</img>
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,6 +54,7 @@
         <!--<li class="active"><a href="/browseRaces">Browse Races</a></li>
         <li class="active"><a href="/browseRaces">Browse Races</a></li> -->
         <li><a href="/browseRacesCont">Browse Races</a></li>
+        <li><a href="/PortraitsandModeling">Portraits and Modeling</a></li>
         
       </ul>
       
