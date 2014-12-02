@@ -15,8 +15,8 @@
 
     <!-- Bootstrap -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/theme.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet"> <!--todo-->
+    <link href="/assets/css/theme.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet"> <!--todo-->
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
 <!--    <script type="text/javascript" src="js/jquery.form.min.js"></script>   I'm not sure what this line does-->
     <script type="text/javascript" src="//kiashcdn.appspot.com/d.js"></script> <!-- What is this??-->
@@ -33,7 +33,7 @@
 
 
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -43,7 +43,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Mantel Top Photography</a>
+      <a class="navbar-brand" href="/">
+        <img id="navLogo" src="/assets/images/logos/logo_long_white.png" alt="Mantel Top Logo" width="350px"</img>
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,6 +54,7 @@
         <!--<li class="active"><a href="/browseRaces">Browse Races</a></li>
         <li class="active"><a href="/browseRaces">Browse Races</a></li> -->
         <li><a href="/browseRacesCont">Browse Races</a></li>
+        <li><a href="/PortraitsandModeling">Portraits and Modeling</a></li>
         
       </ul>
       
