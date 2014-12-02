@@ -5,9 +5,9 @@
 	
 	{{ Form::open(['route' => 'account-sign-in-post']) }}
 		<div>
-			Username: <input id="username" name="username"{{ (Input::old('username')) ? ' value="' . Input::old('username') . '"' : '' }}>
-			@if($errors->has('username'))
-				{{ $errors->first('username') }}
+			Username: <input type="emial "id="email" name="email"{{ (Input::old('email')) ? ' value="' . Input::old('email') . '"' : '' }}>
+			@if($errors->has('email'))
+				{{ $errors->first('email') }}
 			@endif
 		</div>
 		<div>

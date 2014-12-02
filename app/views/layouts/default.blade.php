@@ -61,6 +61,7 @@
       <ul class="nav navbar-nav navbar-right">
         
         <li><a href="{{ URL::route('getCart') }}">Cart</a></li>
+        <li><a href="/getCart">Cart2</a></li>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
