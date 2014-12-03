@@ -49,6 +49,10 @@ class CartController extends BaseController {
 		return View::make('cart')
 			->with('cart', $cart); 
 	}
+	public function checkout()
+	{
+		 return View::make('checkout');
+	}
 
 
 
