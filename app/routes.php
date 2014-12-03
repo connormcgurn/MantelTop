@@ -154,4 +154,8 @@ Route::group(array('before' => 'guest'), function()
         ));
 
 
+<<<<<<< HEAD
 }); // End of Unauthenticated group
+=======
+}); // End of Unauthenticated group
+>>>>>>> c507a0a27bf1a531c8732d565ff294cb52b95571
