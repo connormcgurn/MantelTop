@@ -31,7 +31,7 @@
 				    	{{ Form::text('location')}}
 				    </div>
 				    <div class="col-sm-offset-2 col-sm-10">
-				      {{ Form::submit('Add Race')}}
+				      {{ Form::submit('Add Race', ['class' => 'btn btn-large btn-primary openbutton'])}}
 				      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
 				    </div>
 
@@ -57,7 +57,7 @@
 
 			 
 			    <div class="col-sm-offset-2 col-sm-10">
-			      {{ Form::submit('Add Photos')}}
+			      {{ Form::submit('Add Photos', ['class' => 'btn btn-large btn-primary openbutton'])}}
 			      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
 			    </div>
 
@@ -69,7 +69,7 @@
       		{{ Form::open(array('url' => 'loadPhotos', 'method' => 'post'))}}
       			{{ Form::select('race', Race::lists('name', 'name')) }}
       			<div class="col-sm-offset-2 col-sm-10">
-				      {{ Form::submit('Load Photos')}}
+				      {{ Form::submit('Load Photos', ['class' => 'btn btn-large btn-primary openbutton'])}}
 				      
 				</div>
       		{{ Form::close() }}
@@ -105,7 +105,7 @@
 	      		<input type='hidden' name='race' value='{{ $race }}'>
 
 	      		<div class="col-sm-offset-2 col-sm-10">
-				      {{ Form::submit('Save Images')}}
+				      {{ Form::submit('Save Images', ['class' => 'btn btn-large btn-primary openbutton'])}}
 				      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
 				    </div>
 				{{ Form::close() }} 

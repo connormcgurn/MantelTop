@@ -11,8 +11,9 @@ class CartController extends BaseController {
 		{
 			$_SESSION['cart'] = array();
 		}
-		array_push($_SESSION['cart'], $url);
+
 		//array_push($_SESSION['cart'], $url);
+		array_push($_SESSION['cart'], $url);
 		$_SESSION['cart'] = array_unique($_SESSION['cart']);
 		/*foreach($_SESSION['cart'] as $value)
 		{
@@ -41,6 +42,7 @@ class CartController extends BaseController {
 			foreach($delete as $delete)
 			{
 				unset($cart[$delete]);
+				
 				//echo $delete;
 			}
 		}

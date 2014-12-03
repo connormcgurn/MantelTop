@@ -22,7 +22,7 @@
 		</div>
 
 
-		<input type="submit" value="Sign In">
+		<input type="submit" value="Sign In" class="btn btn-large btn-primary openbutton">
 		
 	{{ Form::close() }}
 

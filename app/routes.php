@@ -10,7 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 Route::post('addToCart', 'CartController@addToCart');
 Route::post('editCart', 'CartController@editCart');
 Route::post('checkout', 'CartController@checkout');
