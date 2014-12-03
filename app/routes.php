@@ -35,6 +35,10 @@ Route::get('postRaceView', array(
         'uses' => 'HomeController@postRaceView'
         ));
 
+Route::get('browseRaces/{raceName}', array(
+        'as' => 'raceName',
+        'uses' => 'HomeController@raceView'
+        ));
 
 
 /* Modeling and Portrain Page */
@@ -151,8 +155,3 @@ Route::group(array('before' => 'guest'), function()
 
 
 }); // End of Unauthenticated group
-
-Route::get('{raceName}', array(
-        'as' => 'raceName',
-        'uses' => 'HomeController@raceView'
-        ));
