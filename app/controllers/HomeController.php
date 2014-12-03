@@ -28,6 +28,13 @@ class HomeController extends BaseController {
 		return View::make('home');
 
 	}
+    
+    /* Portrait Page */
+    public function PortraitsandModeling()
+    {
+        return View::make('portraits');
+    }
+        
 	/* Browse Races Page */
 	public function browseRaces()
 	{
@@ -40,6 +47,7 @@ class HomeController extends BaseController {
 				->with('races', $races);
 
 	}
+    
 	/*  View Specific Race via 'race.blade.php' page */
 	public function raceView($raceName)
 	{	

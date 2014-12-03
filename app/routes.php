@@ -23,20 +23,24 @@ Route::get('/', array(
     ));
 
 /*  View races   */
-Route::get('browseRacesCont', array(
-        'as' => 'browseRacesCont',
+Route::get('browseRaces', array(
+        'as' => 'browseRaces',
         'uses' => 'HomeController@browseRaces'
         ));
-Route::get('browseRaces', function()
-{
-    return View::make('browseRaces');
-});
+
+
 Route::get('postRaceView', array(
         'as' => 'postRaceView',
         'uses' => 'HomeController@postRaceView'
         ));
 
 
+
+/* Modeling and Portrain Page */
+Route::get('PortraitsandModeling', array(
+        'as' => 'PortraitsandModeling',
+        'uses' => 'HomeController@PortraitsandModeling'
+        ));
 
 
 /*  Cart and purchasing routes */
