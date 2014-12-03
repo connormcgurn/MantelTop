@@ -5,10 +5,10 @@ Mantel Top Photography is a photography company that specializes is road race an
 
 [Visit MantelTop.com](http://www.manteltop.com/)
 
-*Features
-	*[Laravel PHP Framework](http://laravel.com/)
-	*[Bootstrap](http://getbootstrap.com/)
-	*[Stripe](https://stripe.com/) - Online payment processing
+* Features
+	* [Laravel PHP Framework](http://laravel.com/)
+	* [Bootstrap](http://getbootstrap.com/)
+	* [Stripe](https://stripe.com/) - Online payment processing
 
 * Authors
 	* Connor McGurn
