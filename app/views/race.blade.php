@@ -1,21 +1,31 @@
 @extends('layouts.default')
 
 @section('content')
-	<h5><a href="/browseRacesCont">Back to Races</a></h5>
+
+    <ol class="breadcrumb">
+  <li><a href="/">MantelTop</a></li>
+  <li><a href="/browseRaces/">Browse Races</a></li>
+  <li class="active">{{ $name }}</li>
+    </ol>
+
 	<h1>{{ $name }}</h1>
 
 		<div class="row">  			
 	  		@foreach ($race as $race)
 	  			{{ Form::open(array('url' => 'addToCart', 'method' => 'post'))}}
-	  			<div class="col-md-4 well" style="padding:5px">
-	  				<img src="<?php echo 'raceImages/' . $name . '/' . $race->url . '/' . $race->url; ?>" width="350px" style="box-shadow: 0 0 15px black;">
-	  				<p>{{ $race->url }}</p>
-	  				<div>
+	  			
+              <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="thumbnail">
+                  <img src="<?php echo 'raceImages/' . $name . '/' . $race->url . '/' . $race->url; ?>" alt="race image">
+                  <div class="caption">
+                    <h3>{{ $race->url }}</h3>
+                      <div>
 	  					{{ Form::submit('Add to Cart')}}
 	  				</div>
-	  				
-	  				<input type='hidden' name='url' value='{{ $race->url }}'>
-	  			</div>
+                  </div>
+                </div>
+              </div>
+            
 	  			{{ Form::close() }}
 	  		@endforeach
 

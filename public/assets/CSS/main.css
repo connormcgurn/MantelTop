@@ -1,6 +1,87 @@
+/*
+notes
+to change when the navbar collapes, change
+@grid-float-breakpoint: in the variables file
+
+*/
 body {
   background: url("../images/background.png");
 }
+/*
+* Position the logo correctly on the navbar
+*/
 #navLogo {
   margin-top: -8px;
+  margin-left: 10%;
+  margin-right: 50px;
+}
+/* 
+* Change the front thumbnails to take up 
+* the entire space of the div and touch eachother
+* Also remove the border
+*/
+.frontThumbs {
+  margin-bottom: 20px;
+}
+.frontThumbs div {
+  padding: 0px;
+}
+.frontThumbs .thumbnail {
+  padding: 0px;
+  border: none;
+  overflow: hidden;
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+.frontThumbs .thumbnail img {
+  width: 100%;
+}
+/*
+* Remove the whitespace
+* below the navbar and the thumbs
+*/
+.navbar {
+  margin-bottom: 0px;
+}
+/*
+* Necessary Items for growing.
+* All rights go to
+* http://ianlunn.github.io/Hover/
+*/
+.grow {
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.grow:hover,
+.grow:focus,
+.grow:active {
+  -webkit-transform: scale(1.025);
+  transform: scale(1.025);
+}
+/*
+* Necessary Items for shrinking.
+* All rights go to
+* http://ianlunn.github.io/Hover/
+*/
+.shrink {
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.shrink:hover,
+.shrink:focus,
+.shrink:active {
+  -webkit-transform: scale(0.95);
+  transform: scale(0.95);
 }
