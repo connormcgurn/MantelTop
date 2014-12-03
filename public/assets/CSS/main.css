@@ -6,6 +6,8 @@ to change when the navbar collapes, change
 */
 body {
   background: url("../images/background.png");
+  font-family: WalkwayBold;
+  font-size: 18px;
 }
 /*
 * Position the logo correctly on the navbar
@@ -42,6 +44,13 @@ body {
 */
 .navbar {
   margin-bottom: 0px;
+}
+/*
+* Add the type face walkway bold
+*/
+@font-face {
+  font-family: WalkwayBold;
+  src: url('/assets/css/walkway/WalkwayBold.ttf');
 }
 /*
 * Necessary Items for growing.

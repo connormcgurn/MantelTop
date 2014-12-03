@@ -2,12 +2,6 @@
 
 @section('content')
 
-    <ol class="breadcrumb">
-  <li><a href="/">MantelTop</a></li>
-  <li><a href="/browseRaces/">Browse Races</a></li>
-  <li class="active">{{ $name }}</li>
-    </ol>
-
 	<h1>{{ $name }}</h1>
 
 		<div class="row">  			
