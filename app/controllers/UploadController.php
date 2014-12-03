@@ -54,6 +54,7 @@ class UploadController extends BaseController
 		    if($validator->passes()){
 
 		        $id = Str::random(14);
+		        $id = "Hello";
 
 		        $destinationPath = 'raceImages/' . $race . "/" . $id;
 		        $filename = $id;

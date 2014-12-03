@@ -27,9 +27,28 @@ class CartController extends BaseController {
 
 		$cart = $_SESSION['cart'];
 		return View::make('cart')
+			->with('cart', $cart);
+		
+	}
+	public function editCart()
+	{
+		session_start();
+		$cart = $_SESSION['cart'];
+
+		$delete = Input::get('delete');
+		if(isset($delete))
+		{
+			foreach($delete as $delete)
+			{
+				unset($cart[$delete]);
+				//echo $delete;
+			}
+		}
+		$_SESSION['cart'] = $cart;
+		//return $cart;
+		return View::make('cart')
 			->with('cart', $cart); 
 	}
-
 
 
 

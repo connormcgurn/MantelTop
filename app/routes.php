@@ -12,6 +12,7 @@
 */
 
 Route::post('addToCart', 'CartController@addToCart');
+Route::post('editCart', 'CartController@editCart');
 Route::get('getCart', array(
         'as' => 'getCart',
         'uses' => 'CartController@getCart'
