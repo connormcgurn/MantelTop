@@ -16,7 +16,7 @@
 	  			
               <div class="col-xs-6 col-sm-4 col-md-3">
                 <div class="thumbnail">
-                  <img src="<?php echo 'raceImages/' . $name . '/' . $race->url . '/' . $race->url; ?>" alt="race image">
+                  <img src="<?php echo '/raceImages/' . $name . '/' . $race->url . '/' . $race->url; ?>" alt="race image">
                   <div class="caption">
                     <h3>{{ $race->url }}</h3>
                       <div>
