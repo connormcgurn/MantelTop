@@ -10,7 +10,7 @@ Mantel Top Photography is a photography company that specializes is road race an
 	*[Bootstrap](http://getbootstrap.com/)
 	*[Stripe](https://stripe.com/) - Online payment processing
 
-*Authors
-	*Connor McGurn
-	*Joel Barna
-	*Brandon Schwarzer
+* Authors
+	* Connor McGurn
+	* Joel Barna
+	* Brandon Schwarzer
