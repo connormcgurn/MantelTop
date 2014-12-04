@@ -14,7 +14,8 @@
                   <div class="caption">
                     <h3>{{ $race->url }}</h3>
                       <div>
-	  					{{ Form::submit('Add to Cart')}}
+                      	<input type="hidden" name="url" id="url" value="{{ $race->url }}">
+	  					{{ Form::submit('Add to Cart', ['class' => 'btn btn-large btn-primary openbutton'])}}
 	  				</div>
                   </div>
                 </div>

@@ -11,13 +11,7 @@
 |
 */
 
-Route::post('addToCart', 'CartController@addToCart');
-Route::post('editCart', 'CartController@editCart');
-Route::post('checkout', 'CartController@checkout');
-Route::get('getCart', array(
-        'as' => 'getCart',
-        'uses' => 'CartController@getCart'
-        ));
+
 /*  Home page   */
 Route::get('/', array(
     'as' => 'home',
@@ -29,18 +23,14 @@ Route::get('browseRaces', array(
         'as' => 'browseRaces',
         'uses' => 'HomeController@browseRaces'
         ));
-
-
 Route::get('postRaceView', array(
         'as' => 'postRaceView',
         'uses' => 'HomeController@postRaceView'
         ));
-
 Route::get('browseRaces/{raceName}', array(
         'as' => 'raceName',
         'uses' => 'HomeController@raceView'
         ));
-
 
 /* Modeling and Portrain Page */
 Route::get('PortraitsandModeling', array(
@@ -50,9 +40,13 @@ Route::get('PortraitsandModeling', array(
 
 
 /*  Cart and purchasing routes */
-
-
-
+Route::post('addToCart', 'CartController@addToCart');
+Route::post('editCart', 'CartController@editCart');
+Route::post('checkout', 'CartController@checkout');
+Route::get('getCart', array(
+        'as' => 'getCart',
+        'uses' => 'CartController@getCart'
+        ));
 
 
 
@@ -155,4 +149,7 @@ Route::group(array('before' => 'guest'), function()
         ));
 
 
+
 }); // End of Unauthenticated group
+
+
