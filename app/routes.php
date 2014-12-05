@@ -56,6 +56,9 @@ Route::post('addRace', 'UploadController@addRace');
 Route::post('loadPhotos', 'UploadController@loadPhotos');
 Route::post('editPhotos', 'UploadController@editPhotos');
 
+Route::post('addPortfolioPhotos', 'UploadController@addPortfolioPhotos');
+
+
 Route::get('admin', function()
 {
 	return 'Admin Page';

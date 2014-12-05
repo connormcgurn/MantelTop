@@ -48,7 +48,7 @@
 </br>
 
 
-
+<!--
 	<h2>Cart Layout Idea 2</h2>
 	@if($_SESSION['cart'] != null)
 		{{ Form::open(array('url' => 'checkout', 'method' => 'post'))}}	
@@ -96,7 +96,7 @@
 	@else
 		Nothing in Cart
 	@endif
-
+-->
 
 
 @stop
