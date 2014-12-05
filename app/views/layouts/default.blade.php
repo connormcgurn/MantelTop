@@ -98,12 +98,9 @@
       
       <ul class="nav navbar-nav navbar-right">
         
-        <li><a href="{{ URL::route('profile-user') }}">Admin Dashboard</a></li>
+        <li><a href="profile/{{{ $user->username or 'notloggedin' }}}">Admin Dashboard</a></li>
         
         <li><a href="{{ URL::route('account-sign-in') }}">Admin Login</a></li>
-
-        
-
 
         
       </ul>

@@ -52,14 +52,13 @@ class AccountController extends BaseController {
 				$user = Auth::user();
 				//return Redirect::intended('/');
 				//return Redirect::route('profile-user');
-				return View::make('home')
-				->with('user', $user);
+				return Redirect::to('/')
+				    ->with('user', $user);
 			}
 
 			else
 			{
 				return Redirect::route('account-sign-in')->with('global', 'There was a problem');
-				//return 'failed';
 			}
 
 		} 
