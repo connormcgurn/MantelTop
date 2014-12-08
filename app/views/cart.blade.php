@@ -22,7 +22,7 @@
 	  @foreach($cart as $url)
 	  <?php $race = strstr($url, '-', true); ?>
 	  
-	  <tr>
+	  <tr id = {{ $url }}>
 	  	<td><img src="<?php echo 'raceImages/' . $race . '/' . $url . '/' . $url; ?>" style="box-shadow: 0 0 15px black; max-width:150px;"></td>
 	  	<td><input type='checkbox' name='digital[]' value='{{ $url }}'><p>($15.00 each)</p></td>
 	    <td><input type="text" name="4x6" style="width:30px"><p>($3.50 each)</p></td>

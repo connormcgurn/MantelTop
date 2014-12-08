@@ -23,13 +23,12 @@ $(document).ready(function(){
     */
     $('#racePictures form input[type="submit"]').on('click', function(){
         
-        var id = $(this).attr('id');
-        
-        console.log(id);
+        var $thisBtn = $(this);
+        var url = $(this).attr('id');
         
         //data we will send to our addToCart controller
         var data = {
-            'url': id
+            'url': url
         };
             
         
@@ -42,6 +41,11 @@ $(document).ready(function(){
             success: function(data){
                 console.log("This is the data from the ajax request");
                 console.log(data);
+                if (data.raceAdded == url){
+                    console.log("Changing button value");
+                    //find the button again, add change the value
+                    $thisBtn.attr('value', 'Added!');
+                }
             },
             error: function(jqchr, textStatus, errorThrown){
                 console.log(errorThrown);

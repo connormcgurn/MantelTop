@@ -20,7 +20,7 @@ class CartController extends BaseController {
 		$_SESSION['cart'] = array_unique($_SESSION['cart']);
 
         
-		return Response::json(array('success' => $url));
+		return Response::json(array('raceAdded' => $url));
 	}
 	public function getCart()
 	{
