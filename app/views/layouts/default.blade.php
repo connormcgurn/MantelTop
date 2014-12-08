@@ -58,7 +58,7 @@
       
       <ul class="nav navbar-nav navbar-right">
 
-        <li><a href="{{ URL::route('getCart') }}">Cart</a></li>
+        <li><a href="{{ URL::route('Cart') }}">Cart</a></li>
        
 
         <li class="dropdown">
@@ -98,10 +98,14 @@
       
       <ul class="nav navbar-nav navbar-right">
         
-        <li><a href="profile/{{{ $user->username or 'notloggedin' }}}">Admin Dashboard</a></li>
-        
+        @if(Auth::check())
+            <li><a href="profile/{{ Auth::user()->username}}">Admin Dashboard</a></li>
+        @else
+           <li><a href="/">Admin Dashboard</a></li>
+        @endif
+          
         <li><a href="{{ URL::route('account-sign-in') }}">Admin Login</a></li>
-
+        
         
       </ul>
     </div><!-- /.navbar-collapse -->

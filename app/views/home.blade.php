@@ -37,7 +37,7 @@
     </div>
 </div>
     
-        @if(Auth::check())
+      @if(Auth::check())
       <h2>Logged In</h2>
       @else
       <h2>Not Logged In</h2>
