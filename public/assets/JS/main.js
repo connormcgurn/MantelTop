@@ -1,5 +1,12 @@
 $(document).ready(function(){
     
+    //variables--------------------
+    //initialize the cart data
+    var cartData = {
+        orders: [], //stores the urls of the files we are going to order
+        price: 0
+    };
+    
     //this will create the breadcrumbs on all pages but homepage
     if (!(window.location.pathname === '/')){
         var splitPathnames = window.location.pathname.split('/');
@@ -23,14 +30,20 @@ $(document).ready(function(){
     */
     $('#racePictures form input[type="submit"]').on('click', function(){
         
-        var $thisBtn = $(this);
+        var $thisBtn = $(this); //for future reference
         var url = $(this).attr('id');
         
         //data we will send to our addToCart controller
         var data = {
             'url': url
         };
-            
+        
+        //this is the function called if the ajax works
+        var onSuccess = function(data){
+            if (data.raceAdded == url){
+                $thisBtn.attr('value', 'Added!');
+            }
+        };
         
         $.ajax({
             url: '/addToCart',
@@ -38,15 +51,7 @@ $(document).ready(function(){
             dataType: 'json',
             contentType: 'application/json',
             'data': JSON.stringify(data),
-            success: function(data){
-                console.log("This is the data from the ajax request");
-                console.log(data);
-                if (data.raceAdded == url){
-                    console.log("Changing button value");
-                    //find the button again, add change the value
-                    $thisBtn.attr('value', 'Added!');
-                }
-            },
+            success: onSuccess,
             error: function(jqchr, textStatus, errorThrown){
                 console.log(errorThrown);
             }
@@ -56,6 +61,63 @@ $(document).ready(function(){
         
     });
 
+    /**
+    * Cart handler---------------
+    * When the user changes a value on the cart
+    * to buy a picture
+    */
+    $('#cart input').on('change', function(){
         
+        //get the picture url for this input event
+        url = $(this).parent().parent().attr('id');
+        
+        if ($(this).attr('type') == 'checkbox'){
+            console.log("Checkbox");
+        }
+        
+        else if ($(this).attr('type') == 'text'){
+            var textEntered = $(this).val().trim();
+            
+            if(!textEntered) //if it was empty
+                textEntered = '0';
+            
+            var testIfNumber = new RegExp('^[0-9]*$');
+            if (testIfNumber.test(textEntered)){
+
+                //see if there is already order data for this picture
+                var alreadyThere = false;
+                for (var i = 0; i < cartData.orders.length; i++){
+                    if (cartData.orders[i].url == url){
+                        //found it, now update the value
+                        var oldValue = cartData.orders[i].sizes[$(this).attr('name')] || 0;
+                        
+                        cartData.price += ($(this).attr('data-cost') * (textEntered - oldValue));
+                        cartData.orders[i].sizes[$(this).attr('name')] = textEntered;
+                        alreadyThere = true;
+                    }
+                }
+
+                if (!alreadyThere && textEntered != 0){
+                    var newOrder = {
+                        'url': url,
+                        'sizes': {}
+                    }
+                    newOrder.sizes[$(this).attr('name')] = textEntered;
+                    cartData.price += textEntered * $(this).attr('data-cost');
+                    cartData.orders.push(newOrder);
+                }
+                
+                //update the price to represent the items expected
+                $('#cartPrice').html('$' + cartData.price.toFixed(2));
+                
+            } else {
+                //send an error message of some type, input isn't a number
+            }
+            
+            console.log(cartData);
+        }
+        
+        
+    });
     
 });
