@@ -63,7 +63,7 @@
 
 			 {{ Form::close() }} 
       	</div>
-      <h3>Add Bib Numbers</h3>
+      <h3>Edit Photos</h3>
       <!-- Display all images for a race with text boxes under each to enter bib numbers-->
       	<div class="well">
       		{{ Form::open(array('url' => 'loadPhotos', 'method' => 'post'))}}
@@ -113,26 +113,43 @@
       		@endif
       		</div>
 			
-	      		
+      	</div>
+
+		<h3>Edit Portfolio</h3>
+      	<div class="well">
       		
+      		{{ Form::open(array('url' => 'addPortfolioPhotos', 'files' => true, 'method' => 'post'))}}
 
-      		
+				
+
+			    <div class="form-group">
+			      <label for="fileToUpload" class="col-sm-2 control-label">Choose Photos</label>
+			  	</br>
+			      {{ Form::file('images[]', ['multiple' => true]) }}
+			    </div>
+			    	
 
 
 
+			 
+			    <div class="col-sm-offset-2 col-sm-10">
+			      {{ Form::submit('Add Photos', ['class' => 'btn btn-large btn-primary openbutton'])}}
+			      <!--<button type="submit" class="btn btn-default">Sign in</button> -->
+			    </div>
 
-					
-			
+			 {{ Form::close() }} 
+			 </br>
+			 {{ Form::open(array('url' => 'loadPortfolioPhotos', 'method' => 'post'))}}
+      			<div class="col-sm-offset-2 col-sm-10">
+				      {{ Form::submit('Load Photos', ['class' => 'btn btn-large btn-primary openbutton'])}}
+				      
+				</div>
+      		{{ Form::close() }}
+
 
 
 
       	</div>
-
-
-
-		
-      
-
 
 
 

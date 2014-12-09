@@ -47,8 +47,23 @@ class AccountController extends BaseController {
 			if(Auth::check())
 			{
 				$user = Auth::user();
+<<<<<<< HEAD
+				//return Redirect::intended('/');
+
+				//return Redirect::route('profile-user')
+				//return View::make('home')
+				//->with('user', $user);
+				return View::make('profile.user')
+						->with('user', $user);
+
+				//return Redirect::route('profile-user');
+				return Redirect::to('/')
+				    ->with('user', $user);
+
+=======
                 
 				return Redirect::to('/');
+>>>>>>> bb084071b800352cafce5d3391f242f4da24193b
 			}
 
 			else
