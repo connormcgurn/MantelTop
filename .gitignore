@@ -7,4 +7,8 @@ composer.lock
 .DS_Store
 Thumbs.db
 /app/config/database.php
+<<<<<<< HEAD
 /public/images/raceImages/
+=======
+/public/raceImages/
+>>>>>>> bb084071b800352cafce5d3391f242f4da24193b

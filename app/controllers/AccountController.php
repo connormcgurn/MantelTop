@@ -43,13 +43,11 @@ class AccountController extends BaseController {
 					'email' => Input::get('email'),
 					'password' => Input::get('password')
 				), $remember);
-			//Auth::loginUsingId(2);
-			//if($auth)
-			
-			//Auth::attempt($credentials, true);
+            
 			if(Auth::check())
 			{
 				$user = Auth::user();
+<<<<<<< HEAD
 				//return Redirect::intended('/');
 
 				//return Redirect::route('profile-user')
@@ -62,6 +60,10 @@ class AccountController extends BaseController {
 				return Redirect::to('/')
 				    ->with('user', $user);
 
+=======
+                
+				return Redirect::to('/');
+>>>>>>> bb084071b800352cafce5d3391f242f4da24193b
 			}
 
 			else

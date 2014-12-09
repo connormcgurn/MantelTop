@@ -56,6 +56,29 @@ body {
     margin-bottom: 0px;
 }
 
+
+/**
+* change the buttons in each race page to
+* take the full width/space of the bottom
+* of the thumbnail div
+*/
+#racePictures{
+    .caption{
+        width: 100%;
+        padding: 0px;
+        
+        .btn{
+            width: inherit;
+            //get rid of the top rounded corners on the button
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+            
+    }
+}
+
 /*
 * Add the type face walkway bold
 */
