@@ -106,16 +106,16 @@ $(document).ready(function(){
             var testIfNumber = new RegExp('^[0-9]*$');
             if (testIfNumber.test(textEntered)){
                 
-            //change the prices variable to represent the correct cost
-            var oldValue = cartData.orders[url].sizes[$(this).attr('name')] || 0;
-            cartData.price += ($(this).attr('data-cost') * (textEntered - oldValue));
+                //change the prices variable to represent the correct cost
+                var oldValue = cartData.orders[url].sizes[$(this).attr('name')] || 0;
+                cartData.price += ($(this).attr('data-cost') * (textEntered - oldValue));
 
-            //place new order value into the associative array
-            cartData.orders[url].sizes[$(this).attr('name')] = textEntered;
-                
-            } else {
-                //send an error message of some type, input isn't a number
-            }
+                //place new order value into the associative array
+                cartData.orders[url].sizes[$(this).attr('name')] = textEntered;
+
+                } else {
+                    //send an error message of some type, input isn't a number
+                }
         }
         
         //update the price to represent the items expected
