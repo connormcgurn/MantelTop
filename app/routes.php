@@ -74,12 +74,6 @@ Route::get('logout', 'SessionsController@destroy');
 Route::get('users/create', 'userController@create');
 Route::get('users', 'userController@index');
 
-/*  Admin Page - Profile Page  */
-Route::get('/profile/{username}', array(
-        'as' => 'profile-user',
-        'uses' => 'ProfileController@user'
-        ));
-
 /* Authenticated group  ---  Only allows access if the user is logged in -- 
       --  will redirect to login page if not logged in */
 Route::group(array('before' => 'auth'), function() {
