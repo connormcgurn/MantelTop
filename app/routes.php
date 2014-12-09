@@ -43,6 +43,7 @@ Route::get('PortraitsandModeling', array(
 Route::post('addToCart', 'CartController@addToCart');
 Route::post('editCart', 'CartController@editCart');
 Route::post('checkout', 'CartController@checkout');
+Route::post('cartData', 'CartController@cartData');
 Route::get('Cart', array(
         'as' => 'Cart',
         'uses' => 'CartController@getCart'

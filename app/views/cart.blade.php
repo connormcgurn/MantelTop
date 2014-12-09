@@ -19,7 +19,7 @@
 	    <th>5x7</th>		
 	    <th>8x10</th>
 	    <th>11x14</th>
-	    <th></th>z
+	    <th></th>
 	  </tr>
 	  @foreach($cart as $url)
 	  <?php $race = strstr($url, '-', true); ?>

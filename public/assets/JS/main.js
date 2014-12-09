@@ -3,8 +3,24 @@ $(document).ready(function(){
     //variables--------------------
     //initialize the cart data
     var cartData = {
-        orders: [], //stores the urls of the files we are going to order
+        orders: {}, //stores the urls of the files we are going to order
         price: 0
+    };
+    
+    //helper functions---------------
+    //helper method to send ajax
+    var sendAjax = function(url, data, onSuccess){
+        $.ajax({
+            'url': url,
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            'data': JSON.stringify(data),
+            success: onSuccess,
+            error: function(jqchr, textStatus, errorThrown){
+                console.log(errorThrown);
+            }
+        }); //end ajax
     };
     
     //this will create the breadcrumbs on all pages but homepage
@@ -45,17 +61,8 @@ $(document).ready(function(){
             }
         };
         
-        $.ajax({
-            url: '/addToCart',
-            type: 'post',
-            dataType: 'json',
-            contentType: 'application/json',
-            'data': JSON.stringify(data),
-            success: onSuccess,
-            error: function(jqchr, textStatus, errorThrown){
-                console.log(errorThrown);
-            }
-        }); //end ajax
+        //use our helper fuction to send ajax
+        sendAjax('/addToCart', data, onSuccess);
         
         return false; //cancel the page reloading on submit
         
@@ -71,8 +78,23 @@ $(document).ready(function(){
         //get the picture url for this input event
         url = $(this).parent().parent().attr('id');
         
+        //if there is no previous order data... make it
+        if (!cartData.orders[url]){
+            var newOrder = {
+                sizes: {}
+            }
+            cartData.orders[url] = newOrder;
+        }
+        
         if ($(this).attr('type') == 'checkbox'){
-            console.log("Checkbox");
+            //update cartData to new value
+            cartData.orders[url].sizes.digital = $(this).prop('checked');
+            
+            //change price based on old value
+            if ($(this).prop('checked'))
+                cartData.price += 15;
+            else
+                cartData.price -= 15;
         }
         
         else if ($(this).attr('type') == 'text'){
@@ -83,41 +105,37 @@ $(document).ready(function(){
             
             var testIfNumber = new RegExp('^[0-9]*$');
             if (testIfNumber.test(textEntered)){
-
-                //see if there is already order data for this picture
-                var alreadyThere = false;
-                for (var i = 0; i < cartData.orders.length; i++){
-                    if (cartData.orders[i].url == url){
-                        //found it, now update the value
-                        var oldValue = cartData.orders[i].sizes[$(this).attr('name')] || 0;
-                        
-                        cartData.price += ($(this).attr('data-cost') * (textEntered - oldValue));
-                        cartData.orders[i].sizes[$(this).attr('name')] = textEntered;
-                        alreadyThere = true;
-                    }
-                }
-
-                if (!alreadyThere && textEntered != 0){
-                    var newOrder = {
-                        'url': url,
-                        'sizes': {}
-                    }
-                    newOrder.sizes[$(this).attr('name')] = textEntered;
-                    cartData.price += textEntered * $(this).attr('data-cost');
-                    cartData.orders.push(newOrder);
-                }
                 
-                //update the price to represent the items expected
-                $('#cartPrice').html('$' + cartData.price.toFixed(2));
+            //change the prices variable to represent the correct cost
+            var oldValue = cartData.orders[url].sizes[$(this).attr('name')] || 0;
+            cartData.price += ($(this).attr('data-cost') * (textEntered - oldValue));
+
+            //place new order value into the associative array
+            cartData.orders[url].sizes[$(this).attr('name')] = textEntered;
                 
             } else {
                 //send an error message of some type, input isn't a number
             }
-            
-            console.log(cartData);
         }
         
+        //update the price to represent the items expected
+        $('#cartPrice').html('$' + cartData.price.toFixed(2));
+    });
+    
+    /**
+    * When the user submits the cart
+    */
+    $('#cart').parent().on('submit', function(){
         
+        var onSuccess = function(data){
+            console.log(data);
+        };
+        
+        //send cart data to server
+        sendAjax('/cartData', cartData, onSuccess);
+        
+        //prevent the page from reloading
+        return false;
     });
     
 });
