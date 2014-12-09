@@ -38,7 +38,7 @@
 	  	<td></td>
 	  	<td></td>
 	  	<td><h3>Subtotal:</h3></td>
-	  	<td><h3 id="cartPrice">$12.45</h3></td>
+	  	<td><h3 id="cartPrice">$0.00</h3></td>
 	  	<td>{{ Form::submit('Checkout', ['class' => 'btn btn-large btn-primary openbutton']) }}</td>
           
 	  </tr>
