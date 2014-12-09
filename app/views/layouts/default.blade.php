@@ -98,23 +98,14 @@
       
       <ul class="nav navbar-nav navbar-right">
         
-<<<<<<< HEAD
-        <li><a href="profile/{{{ $user->username or 'notloggedin' }}}">Admin Dashboard</a></li>
-        
-=======
         @if(Auth::check())
             <li><a href="profile/{{ Auth::user()->username}}">Admin Dashboard</a></li>
         @else
            <li><a href="/">Admin Dashboard</a></li>
         @endif
           
->>>>>>> bb084071b800352cafce5d3391f242f4da24193b
         <li><a href="{{ URL::route('account-sign-in') }}">Admin Login</a></li>
         
-<<<<<<< HEAD
-=======
-        
->>>>>>> bb084071b800352cafce5d3391f242f4da24193b
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
