@@ -117,11 +117,7 @@ class UploadController extends BaseController
 		$race = Input::get('race');
 
 
-		$data = Input::all();
-		foreach($data as $data)
-		{
-			return $data;
-		}
+		
 
 
 
@@ -142,6 +138,11 @@ class UploadController extends BaseController
 					
 		
 		
+	}
+	public function addPortfolio()
+	{
+
+
 	}
 
 

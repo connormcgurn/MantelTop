@@ -157,4 +157,8 @@ Route::get('racesandsports', function()
 {
     return View::make('racesandsports');
 }); 
+Route::get('portfolio', function()
+{
+    return View::make('portfolio');
+}); 
 

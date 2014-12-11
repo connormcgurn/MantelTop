@@ -53,6 +53,7 @@
       <ul class="nav navbar-nav">
         <li><a class="shrink" href="/PortraitsandModeling">Portraits and Modeling</a></li>
         <li><a class="shrink" href="/browseRaces">Browse Races</a></li>
+        <li><a class="shrink" href="/portfolio">Portfolio</a></li>
         
       </ul>
       
