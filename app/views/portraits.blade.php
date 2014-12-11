@@ -15,7 +15,7 @@ img {
     -webkit-transition-duration: 0.3s; /* Safari */
     }
 
-img:hover {
+#pic_hover:hover {
 	cursor: pointer;
 	-webkit-transform: scale(2, 2);
     -ms-transform: scale(2, 2);
@@ -41,16 +41,18 @@ img:hover {
         <li>Family and Corporate Events</li>
         <li>...And Anything Else You May Need</li>
     </ul>
+       <p>To book a photoshoot or event with Mantel Top Photography, visit our <a href="/contactus">Contact Us page</a>.</p>
 
+<p>*Prices are nagotiated on a consultation basis.</p>
     <div class="container">
   <div class="row">
-	<img src="assets/images/portrait1.jpg" width="140px" height="140" alt="..." class="img-rounded">
-  <img src="assets/images/portrait2.jpg" width="140px" height="140" alt="..." class="img-rounded">
-  <img src="assets/images/portrait3.jpg" width="140px" height="140" alt="..." class="img-rounded">
-  <img src="assets/images/portrait4.jpg" width="140px" height="140" alt="..." class="img-rounded">
-  <img src="assets/images/portrait5.jpg" width="140px" height="140" alt="..." class="img-rounded">
-  <img src="assets/images/portrait6.jpg" width="140px" height="140" alt="..." class="img-rounded">
-  <img src="assets/images/portrait7.jpg" width="140px" height="140" alt="..." class="img-rounded">
+	<img id="pic_hover" src="assets/images/portrait1.jpg" width="140px" height="140" alt="..." class="img-rounded">
+  <img id="pic_hover" src="assets/images/portrait2.jpg" width="140px" height="140" alt="..." class="img-rounded">
+  <img id="pic_hover" src="assets/images/portrait3.jpg" width="140px" height="140" alt="..." class="img-rounded">
+  <img id="pic_hover" src="assets/images/portrait4.jpg" width="140px" height="140" alt="..." class="img-rounded">
+  <img id="pic_hover" src="assets/images/portrait5.jpg" width="140px" height="140" alt="..." class="img-rounded">
+  <img id="pic_hover" src="assets/images/portrait6.jpg" width="140px" height="140" alt="..." class="img-rounded">
+  <img id="pic_hover" src="assets/images/portrait7.jpg" width="140px" height="140" alt="..." class="img-rounded">
   </div>
 </div>
 

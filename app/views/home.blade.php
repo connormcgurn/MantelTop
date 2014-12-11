@@ -37,7 +37,7 @@
                 <hr/>
             <p> Mantel Top Photography has been one of New Hampshire's leading race photographers since being established in 2012.
             Mantel Top Photography covers a wide variety of race events, including 5ks, 10ks, Marathons, Cross Country, and more. </p>
-            
+             <p>For more information on our Race and Sports photography visit our <a href="/racesandsports">Races and Sports page</a>.</p>
         </div>
     </div>
 </div>
