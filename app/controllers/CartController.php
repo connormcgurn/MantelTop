@@ -25,40 +25,73 @@ class CartController extends BaseController {
 	public function getCart()
 	{
 		session_start();
-
-		$cart = $_SESSION['cart'];
-		return View::make('cart')
+		if(isset($_SESSION['cart']))
+		{
+			$cart = $_SESSION['cart'];
+			return View::make('cart')
 			->with('cart', $cart);
+
+		}
+		else
+		{
+			return View::make('cart');
+		}
+		
+		
 		
 	}
     
     public function cartData()
     {
+
         $data = Input::all();
+
+        session_start();
+        if(!isset($_SESSION['order']))
+        {
+            $_SESSION['order'] = array();
+        }
+        array_push($_SESSION['order'], $data);
+
+
+        //  and
+        return Response::json(array('data' => $data, 'redirect' => false));
+
         
+
         //the data looks like this! ( in JSON, but same really for php
-        /*
-        data: {
+        
+        /*data: {
             orders: {
                 urlToPicture1: {
                     sizes: {
                         digital: true,
                         4x7: 1,
                         6x7: 7
-                        ... any sizes they selected. Could be 0!!!
+                        //... any sizes they selected. Could be 0!!!
                     },
                 urlToSecondPicture : {....}
             },
             price: ThePriceShownOnTheScreenBeforeCheckout
-        }
+        }*/
         
-        Notes: It's always good practice to double check the price on the server side,
+        /*Notes: It's always good practice to double check the price on the server side,
         hypothetically someout COULD edit the price variable to be like, -50 if they
         really wanted to be an asshole and send it like that. But maybe just do some contraint
-        checking. 
-        */
+        checking. */
         
-        return Response::json(array('data' => $data));
+        /*$price = $data['price'];
+        $orders = $data['orders'];
+        
+        this is an example of how to access the data. We can only return JSON.
+        Right now, the client only checks that you returned SOMETHING. If you didn't return anything,
+        the page is not redirected to /checkout. */
+        
+        /*$willReturn = array();
+        foreach ($orders as $url => $sizes){
+            //do stuff with the url and sizes
+            array_push($willReturn, $url);
+        }*/
         
     }
     
@@ -84,8 +117,18 @@ class CartController extends BaseController {
 	}
 	public function checkout()
 	{
-		 return View::make('checkout');
+		session_start();
+		if(isset($_SESSION['order']))
+		{
+			$order = $_SESSION['order'];
+			return $_SESSION['order'];
+		}
+		
+		
+		return View::make('checkout')
+			->with('order', $order);
 	}
+
 
 
 

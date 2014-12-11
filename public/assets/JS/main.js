@@ -100,8 +100,10 @@ $(document).ready(function(){
         else if ($(this).attr('type') == 'text'){
             var textEntered = $(this).val().trim();
             
-            if(!textEntered) //if it was empty
+            if(!textEntered){ //if it was empty
                 textEntered = '0';
+                $(this).val("0"); //set text back to 0
+            }
             
             var testIfNumber = new RegExp('^[0-9]*$');
             if (testIfNumber.test(textEntered)){
@@ -123,17 +125,34 @@ $(document).ready(function(){
     });
     
     /**
+    * On page load, change all cart inputs to be
+    * 0 and unchecked because sometimes when you press
+    * the back button, it will put in values from before BUT
+    * that isn't stored in the cartData variable, so reset
+    */
+    $('#cart input[type="text"]').each(function(){
+        $(this).val("0");
+    });
+    $('#cart input[type="checkbox"]').each(function(){
+        $(this).prop('checked', false);
+    });
+    //hi
+    
+    /**
     * When the user submits the cart
     */
     $('#cart').parent().on('submit', function(){
         
         var onSuccess = function(data){
-            console.log(data);
+            //if something was returned, redirect
+            if (data.redirect)
+                window.location.href = window.location.origin + '/checkout';
+            else 
+                console.log(data);
         };
         
         //send cart data to server
         sendAjax('/cartData', cartData, onSuccess);
-        
         //prevent the page from reloading
         return false;
     });

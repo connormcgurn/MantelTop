@@ -6,9 +6,6 @@
 <h1>Shopping Cart</h1>
 	
 	
-
-
-	<h2>Cart Layout Idea 1</h2>
     @if($_SESSION['cart'] != null)
     {{ Form::open(array('url' => 'checkout', 'method' => 'post'))}}	
 	<table class="table container" id="cart" style="width:1000px">
@@ -47,4 +44,5 @@
     @else
 		Nothing in Cart
 	@endif
+
 @stop
