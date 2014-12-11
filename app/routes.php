@@ -162,3 +162,8 @@ Route::get('portfolio', function()
     return View::make('portfolio');
 }); 
 
+
+Route::get('contactus', function()
+{
+    return View::make('contactus');
+});
