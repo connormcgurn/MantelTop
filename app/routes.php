@@ -158,3 +158,8 @@ Route::get('racesandsports', function()
     return View::make('racesandsports');
 }); 
 
+
+Route::get('contactus', function()
+{
+    return View::make('contactus');
+});
