@@ -56,6 +56,15 @@ class CartController extends BaseController {
 		2.  Any code other than the code you wrote:			*/
 
 	        $data = Input::all();
+
+	        session_start();
+	        if(!isset($_SESSION['order']))
+			{
+				$_SESSION['order'] = array();
+			}
+	        array_push($_SESSION['order'], $data);
+
+
 	        //  and
 	        return Response::json(array('data' => $data));
 
@@ -64,7 +73,7 @@ class CartController extends BaseController {
 
 	   		for instance, if I add this simple line BEFORE any of the previous code:			*/
 
-	   		   echo 'Hello World';
+	   		  // echo 'Hello World';
 
 	   	/* 	it will return the error, but if it is BEFORE any of the previous code, it returns the error...
 	   		and even when it returns the $data object, it doesn't echo 'Hello World'. 
@@ -128,8 +137,21 @@ class CartController extends BaseController {
 	}
 	public function checkout()
 	{
-		 return View::make('checkout');
+		session_start();
+		if(isset($_SESSION['order']))
+		{
+			$order = $_SESSION['order'];
+			return $_SESSION['order'];
+			
+			
+
+		}
+		
+		
+		return View::make('checkout')
+			->with('order', $order);
 	}
+
 
 
 
