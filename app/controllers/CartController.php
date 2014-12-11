@@ -44,52 +44,19 @@ class CartController extends BaseController {
     public function cartData()
     {
 
+        $data = Input::all();
+
+        session_start();
+        if(!isset($_SESSION['order']))
+        {
+            $_SESSION['order'] = array();
+        }
+        array_push($_SESSION['order'], $data);
 
 
-    	/*
-		Joel, your code returns the $data object when the checkout button is clicked, which you can see under the 
-		console in chrome.... which is what's supposed to be happen... all good and dandy.
-		However, there are two problems...
+        //  and
+        return Response::json(array('data' => $data, 'redirect' => false));
 
-	 	1.  When you click 'checkout', nothing actually happens... it doesnt seem to even reload the page. However,
-	 	    it does look like it accesses this controller. Which leads to the next problem.
-
-		2.  Any code other than the code you wrote:			*/
-
-	        $data = Input::all();
-
-	        session_start();
-	        if(!isset($_SESSION['order']))
-			{
-				$_SESSION['order'] = array();
-			}
-	        array_push($_SESSION['order'], $data);
-
-
-	        //  and
-	        return Response::json(array('data' => $data));
-
-	   /*   breaks it and returns this error in the console:
-	   			"SyntaxError: Unexpected token a {stack: (...), message: "Unexpected token a"}"
-
-	   		for instance, if I add this simple line BEFORE any of the previous code:			*/
-
-	   		  // echo 'Hello World';
-
-	   	/* 	it will return the error, but if it is BEFORE any of the previous code, it returns the error...
-	   		and even when it returns the $data object, it doesn't echo 'Hello World'. 
-	   		Any ideas?
-	   	*/
-			
-
-
-
-
-
-
-
-
-	   $data = Input::all();
         
 
         //the data looks like this! ( in JSON, but same really for php
@@ -113,22 +80,18 @@ class CartController extends BaseController {
         really wanted to be an asshole and send it like that. But maybe just do some contraint
         checking. */
         
-        $price = $data['price'];
+        /*$price = $data['price'];
         $orders = $data['orders'];
         
-        /*this is an example of how to access the data. We can only return JSON.
+        this is an example of how to access the data. We can only return JSON.
         Right now, the client only checks that you returned SOMETHING. If you didn't return anything,
         the page is not redirected to /checkout. */
         
-        $willReturn = array();
+        /*$willReturn = array();
         foreach ($orders as $url => $sizes){
             //do stuff with the url and sizes
             array_push($willReturn, $url);
-        }
-        
-        //note, if you want to see this object, you must turn off the redirect in main.js
-        //which is located in the onSuccess function. 
-        return Response::json(array('data' => $willReturn));
+        }*/
         
     }
     
@@ -159,9 +122,6 @@ class CartController extends BaseController {
 		{
 			$order = $_SESSION['order'];
 			return $_SESSION['order'];
-			
-			
-
 		}
 		
 		

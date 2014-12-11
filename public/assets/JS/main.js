@@ -144,10 +144,11 @@ $(document).ready(function(){
     $('#cart').parent().on('submit', function(){
         
         var onSuccess = function(data){
-            console.log(data);
             //if something was returned, redirect
-            if (data)
+            if (data.redirect)
                 window.location.href = window.location.origin + '/checkout';
+            else 
+                console.log(data);
         };
         
         //send cart data to server
