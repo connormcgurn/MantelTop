@@ -45,6 +45,7 @@ class CartController extends BaseController {
     {
 
 
+
     	/*
 		Joel, your code returns the $data object when the checkout button is clicked, which you can see under the 
 		console in chrome.... which is what's supposed to be happen... all good and dandy.
@@ -87,7 +88,9 @@ class CartController extends BaseController {
 
 
 
-        /////////////////////////////////////////////////////////////////////////////////
+
+	   $data = Input::all();
+        
 
         //the data looks like this! ( in JSON, but same really for php
         
@@ -110,8 +113,22 @@ class CartController extends BaseController {
         really wanted to be an asshole and send it like that. But maybe just do some contraint
         checking. */
         
+        $price = $data['price'];
+        $orders = $data['orders'];
         
+        /*this is an example of how to access the data. We can only return JSON.
+        Right now, the client only checks that you returned SOMETHING. If you didn't return anything,
+        the page is not redirected to /checkout. */
         
+        $willReturn = array();
+        foreach ($orders as $url => $sizes){
+            //do stuff with the url and sizes
+            array_push($willReturn, $url);
+        }
+        
+        //note, if you want to see this object, you must turn off the redirect in main.js
+        //which is located in the onSuccess function. 
+        return Response::json(array('data' => $willReturn));
         
     }
     

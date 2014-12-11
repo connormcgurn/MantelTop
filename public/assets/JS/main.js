@@ -129,11 +129,13 @@ $(document).ready(function(){
         
         var onSuccess = function(data){
             console.log(data);
+            //if something was returned, redirect
+            if (data)
+                window.location.href = window.location.origin + '/checkout';
         };
         
         //send cart data to server
         sendAjax('/cartData', cartData, onSuccess);
-        
         //prevent the page from reloading
         return false;
     });
