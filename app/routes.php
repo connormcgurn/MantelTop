@@ -151,3 +151,10 @@ Route::group(array('before' => 'guest'), function()
 }); // End of Unauthenticated group
 
 
+//Brandon Routes
+
+Route::get('racesandsports', function()
+{
+    return View::make('racesandsports');
+}); 
+

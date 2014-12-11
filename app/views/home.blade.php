@@ -29,9 +29,10 @@
     
     <div class="col-xs-12 col-sm-8">
         <div class="jumbotron" style="padding-top: 66px;">
-            <p> Hey I'm like, super cool.</p>
+            <h2>Making Triumphant Memories Last</h2>
                 <hr/>
-            <p> I should probably change this at some point</p>
+            <p> Mantel Top Photography has been one of New Hampshire's leading race photographers since being established in 2012.
+            Mantel Top Photography covers a wide variety of race events, including 5ks, 10ks, Marathons, Cross Country, and more. </p>
             <p> Maybe a picture will go somewhere?</p>
         </div>
     </div>
