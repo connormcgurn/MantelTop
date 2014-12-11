@@ -44,8 +44,54 @@ class CartController extends BaseController {
     public function cartData()
     {
 
+
+
+    	/*
+		Joel, your code returns the $data object when the checkout button is clicked, which you can see under the 
+		console in chrome.... which is what's supposed to be happen... all good and dandy.
+		However, there are two problems...
+
+	 	1.  When you click 'checkout', nothing actually happens... it doesnt seem to even reload the page. However,
+	 	    it does look like it accesses this controller. Which leads to the next problem.
+
+		2.  Any code other than the code you wrote:			*/
+
+	        $data = Input::all();
+
+	        session_start();
+	        if(!isset($_SESSION['order']))
+			{
+				$_SESSION['order'] = array();
+			}
+	        array_push($_SESSION['order'], $data);
+
+
+	        //  and
+	        return Response::json(array('data' => $data));
+
+	   /*   breaks it and returns this error in the console:
+	   			"SyntaxError: Unexpected token a {stack: (...), message: "Unexpected token a"}"
+
+	   		for instance, if I add this simple line BEFORE any of the previous code:			*/
+
+	   		  // echo 'Hello World';
+
+	   	/* 	it will return the error, but if it is BEFORE any of the previous code, it returns the error...
+	   		and even when it returns the $data object, it doesn't echo 'Hello World'. 
+	   		Any ideas?
+	   	*/
+			
+
+
+
+
+
+
+
+
 	   $data = Input::all();
         
+
         //the data looks like this! ( in JSON, but same really for php
         
         /*data: {
@@ -108,8 +154,21 @@ class CartController extends BaseController {
 	}
 	public function checkout()
 	{
-		 return View::make('checkout');
+		session_start();
+		if(isset($_SESSION['order']))
+		{
+			$order = $_SESSION['order'];
+			return $_SESSION['order'];
+			
+			
+
+		}
+		
+		
+		return View::make('checkout')
+			->with('order', $order);
 	}
+
 
 
 
