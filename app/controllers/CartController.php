@@ -47,15 +47,16 @@ class CartController extends BaseController {
         $data = Input::all();
 
         session_start();
-        if(!isset($_SESSION['order']))
+        if(!isset($_SESSION['orderData']))
         {
-            $_SESSION['order'] = array();
+            $_SESSION['orderData'] = array();
         }
-        array_push($_SESSION['order'], $data);
+        
+        $_SESSION['orderData'] = $data;
 
 
         //  and
-        return Response::json(array('data' => $data, 'redirect' => false));
+        return Response::json(array('data' => $data, 'redirect' => true));
 
         
 
@@ -112,24 +113,16 @@ class CartController extends BaseController {
 		}
 		$_SESSION['cart'] = $cart;
 		//return $cart;
-		return View::make('cart')
-			->with('cart', $cart); 
+		return View::make('cart');
 	}
 	public function checkout()
 	{
 		session_start();
-		if(isset($_SESSION['order']))
+		if(isset($_SESSION['orderData']))
 		{
-			$order = $_SESSION['order'];
-			return $_SESSION['order'];
+			return View::make('checkout');
 		}
 		
-		
-		return View::make('checkout')
-			->with('order', $order);
+        return Redirect::route('Cart');
 	}
-
-
-
-
 }
