@@ -116,6 +116,15 @@ class UploadController extends BaseController
 		$cover = Input::get('cover');
 		$race = Input::get('race');
 
+
+		$data = Input::all();
+		foreach($data as $data)
+		{
+			return $data;
+		}
+
+
+
 		if(isset($delete))
 		foreach($delete as $delete)
 		{
@@ -134,51 +143,7 @@ class UploadController extends BaseController
 		
 		
 	}
-	public function loadPortfolioPhotos()
-	{
-		return 'test';
 
-	}
-	public function addPortfolioPhotos()
-	{
-
-		$user = Auth::user();
-		
-		$files = Input::file('images');
-
-		foreach($files as $file) {
-		    $rules = array(
-		       'file' => 'required|mimes:png,gif,jpeg,jpg,txt,pdf,doc,rtf|max:9999999999999999'
-		    );
-		    $validator = \Validator::make(array('file'=> $file), $rules);
-		    if($validator->passes()){
-
-		        $id = Str::random(14);
-		        $id = $id;
-
-		        $destinationPath = 'portfolio/' . $id;
-		        $filename = $id;
-		        $mime_type = $file->getMimeType();
-		        $extension = $file->getClientOriginalExtension();
-		        $upload_success = $file->move($destinationPath, $filename);
-		     
-		        DB::table('portfolio')->insert(
-				    array('url' => $filename)
-				);
-
-		    } else {
-		        return Redirect::back()->with('error', 'I only accept images.');
-		    }
-		    
-
-
-
-
-
-		    //return View::make('profile.user')
-			//		->with('user', $user);
-	}
-}
 
 }
 

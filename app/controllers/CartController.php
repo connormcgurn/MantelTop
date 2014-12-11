@@ -25,40 +25,84 @@ class CartController extends BaseController {
 	public function getCart()
 	{
 		session_start();
-
-		$cart = $_SESSION['cart'];
-		return View::make('cart')
+		if(isset($_SESSION['cart']))
+		{
+			$cart = $_SESSION['cart'];
+			return View::make('cart')
 			->with('cart', $cart);
+
+		}
+		else
+		{
+			return View::make('cart');
+		}
+		
+		
 		
 	}
     
     public function cartData()
     {
-        $data = Input::all();
-        
+
+
+    	/*
+		Joel, your code returns the $data object when the checkout button is clicked, which you can see under the 
+		console in chrome.... which is what's supposed to be happen... all good and dandy.
+		However, there are two problems...
+
+	 	1.  When you click 'checkout', nothing actually happens... it doesnt seem to even reload the page. However,
+	 	    it does look like it accesses this controller. Which leads to the next problem.
+
+		2.  Any code other than the code you wrote:			*/
+
+	        $data = Input::all();
+	        //  and
+	        return Response::json(array('data' => $data));
+
+	   /*   breaks it and returns this error in the console:
+	   			"SyntaxError: Unexpected token a {stack: (...), message: "Unexpected token a"}"
+
+	   		for instance, if I add this simple line BEFORE any of the previous code:			*/
+
+	   		   echo 'Hello World';
+
+	   	/* 	it will return the error, but if it is BEFORE any of the previous code, it returns the error...
+	   		and even when it returns the $data object, it doesn't echo 'Hello World'. 
+	   		Any ideas?
+	   	*/
+			
+
+
+
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+
         //the data looks like this! ( in JSON, but same really for php
-        /*
-        data: {
+        
+        /*data: {
             orders: {
                 urlToPicture1: {
                     sizes: {
                         digital: true,
                         4x7: 1,
                         6x7: 7
-                        ... any sizes they selected. Could be 0!!!
+                        //... any sizes they selected. Could be 0!!!
                     },
                 urlToSecondPicture : {....}
             },
             price: ThePriceShownOnTheScreenBeforeCheckout
-        }
+        }*/
         
-        Notes: It's always good practice to double check the price on the server side,
+        /*Notes: It's always good practice to double check the price on the server side,
         hypothetically someout COULD edit the price variable to be like, -50 if they
         really wanted to be an asshole and send it like that. But maybe just do some contraint
-        checking. 
-        */
+        checking. */
         
-        return Response::json(array('data' => $data));
+        
+        
         
     }
     
