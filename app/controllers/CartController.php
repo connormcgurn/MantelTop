@@ -47,10 +47,19 @@ class CartController extends BaseController {
         $data = Input::all();
 
         session_start();
+
         
         $_SESSION['order'] = array();
         
         array_push($_SESSION['order'], $data);
+
+        if(!isset($_SESSION['orderData']))
+        {
+            $_SESSION['orderData'] = array();
+        }
+        
+        $_SESSION['orderData'] = $data;
+
 
 
         //  and
@@ -111,12 +120,12 @@ class CartController extends BaseController {
 		}
 		$_SESSION['cart'] = $cart;
 		//return $cart;
-		return View::make('cart')
-			->with('cart', $cart); 
+		return View::make('cart');
 	}
 	public function checkout()
 	{
 		session_start();
+
 		$data = $_SESSION['order'];
 		$order = $data[0];
 		
@@ -128,10 +137,13 @@ class CartController extends BaseController {
 
 		return View::make('checkout')
 			->with('orders', $order);
-			
+
+		if(isset($_SESSION['orderData']))
+		{
+			return View::make('checkout');
+		}
+		
+        return Redirect::route('Cart');
+
 	}
-
-
-
-
 }

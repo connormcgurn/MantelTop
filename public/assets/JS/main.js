@@ -136,7 +136,6 @@ $(document).ready(function(){
     $('#cart input[type="checkbox"]').each(function(){
         $(this).prop('checked', false);
     });
-    //hi
     
     /**
     * When the user submits the cart
